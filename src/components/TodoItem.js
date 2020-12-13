@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+
 import { deleteTodo, updateTodo } from "./redux/actions";
 
 const TodoItem = ({ todo }) => {
@@ -8,11 +9,9 @@ const TodoItem = ({ todo }) => {
    const [todoName, setTodoName] = useState(todo.name);
 
    return (
-      <div>
-         <div className="row mx-2 align-items-center">
-            <div>#{todo.id.length > 1 ? todo.id[0] : todo.id}</div>
-
-            <div className="col">
+      <>
+         <div className="row mx-5 align-items-center">
+            <div className="col-12 col-sm-12 col-md-8" style={{ color: "orange" }}>
                {editTodo ? (
                   <input
                      onChange={(e) => setTodoName(e.target.value)}
@@ -25,27 +24,29 @@ const TodoItem = ({ todo }) => {
                )}
             </div>
 
-            <button
-               onClick={() => {
-                  dispatch(
-                     updateTodo({
-                        ...todo,
-                        name: todoName,
-                     })
-                  );
-                  editTodo && setTodoName(todo.name);
-                  setEditTodo(!editTodo);
-               }}
-               className="btn btn-danger m-2"
-            >
-               {editTodo ? "Update" : "Edit"}
-            </button>
+            <div className="col-12 col-sm-12 col-md-3">
+               <button
+                  onClick={() => {
+                     dispatch(
+                        updateTodo({
+                           ...todo,
+                           name: todoName,
+                        })
+                     );
+                     editTodo && setTodoName(todo.name);
+                     setEditTodo(!editTodo);
+                  }}
+                  className={editTodo ? "btn btn-secondary m-2" : "btn btn-warning m-2"}
+               >
+                  {editTodo ? "Update" : "Edit"}
+               </button>
 
-            <button onClick={() => dispatch(deleteTodo(todo.id))} className="btn btn-warning m-2">
-               Delete
-            </button>
+               <button onClick={() => dispatch(deleteTodo(todo.id))} className="btn btn-danger m-2">
+                  Delete
+               </button>
+            </div>
          </div>
-      </div>
+      </>
    );
 };
 

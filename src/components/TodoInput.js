@@ -9,7 +9,7 @@ const TodoInput = () => {
 
    return (
       <div>
-         <div className="row m-2">
+         <div className="row m-2 w-75 mx-auto">
             <input
                onChange={(e) => setName(e.target.value)}
                value={name}
@@ -27,7 +27,7 @@ const TodoInput = () => {
                   );
                   setName("");
                }}
-               className="btn btn-primary mx-2"
+               className="btn btn-primary w-25"
             >
                Add
             </button>

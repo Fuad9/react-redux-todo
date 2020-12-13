@@ -10,7 +10,7 @@ const TodoItem = ({ todo }) => {
 
    return (
       <>
-         <div className="row mx-5 align-items-center">
+         <div className="row mx-5 my-5 align-items-center">
             <div className="col-12 col-sm-12 col-md-8" style={{ color: "orange" }}>
                {editTodo ? (
                   <input
